@@ -1,0 +1,32 @@
+<div class="container">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th>id</th>
+        <th>Date</th>
+        <th>Code Transfert</th>
+        <th>Montant</th>
+        <th>Emetteur</th>
+        <th>Recepteur</th>
+      </tr>
+      </thead>
+      <tbody *ngFor="let transfert of transferts; let emetteur of emetteurs; let recepteur of recepteurs; let i = index">
+      <tr>
+        <td>{{ transfert.idTransfert }}</td>
+        <td>{{ transfert.date }}</td>
+        <td>{{ transfert.codeTransfert }}</td>
+        <td>{{ transfert.montant }}</td>
+        <td>{{ emetteur.id }} | {{ emetteur.nom }} | {{ emetteur.prenom }} </td>
+        <td>{{ recepteur.id }} | {{ recepteur.nom }} | {{ recepteur.prenom }} </td>
+        <td>
+          <button class="btn btn-danger" type="button" (click)="onArchive(i)">Archiver</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      <p>{{errorMessage}}</p>
+      <button class="btn btn-danger" type="button" (click)="onClearErrorMessage()">Clear Error</button>
+    </div>
+  </div>  
